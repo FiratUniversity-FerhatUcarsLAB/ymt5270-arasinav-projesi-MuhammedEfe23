@@ -231,11 +231,7 @@ https://orangedatamining.com/
 
 ## Ekler
 ### Orange Proje Dosyası
-> *Orange proje dosyanızı (.ows) bu repoya yükleyiniz ve buradan referans veriniz.*
-> 
-> [Proje_Dosyasi.ows](proje_dosyasi.ows)
+ [Proje_Dosyasi.ows](project/MakineOgrVize.ows)
 
 ### Veri Seti Dosyası veya Bağlantısı
-> *Kullandığınız veri setini bu repoya yükleyebilir veya bağlantısını burada paylaşabilirsiniz.*
->
-> [Veri_Seti.csv](veri_seti.csv) veya [Veri Seti Bağlantısı](https://ornek-veri-seti-baglantisi.com)
+Veri seti baağlantısı: [Veri Seti Bağlantısı](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
