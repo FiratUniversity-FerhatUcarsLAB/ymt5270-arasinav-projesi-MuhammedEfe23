@@ -72,7 +72,8 @@ Veri seti dengeli bir sınıf dağılımına sahiptir ve eksik veri içermemekte
 
 ## Keşifsel Veri Analizi (Explanatory Data Analysis - EDA)
 ### Temel İstatistikler
-> *Veri setine ait temel istatistikleri (ortalama, medyan, standart sapma, vb.) buraya ekleyiniz. Orange'dan alınan ekran görüntüleri ile destekleyebilirsiniz.*
+![Yaş Dağılımı](img/age.png)
+
 
 ### Veri Ön İşleme
 Olası eksiklikleri tespit etmek amacıyla Impute bileşeni kullanılmıştır. Bu bileşen, eksik değer olması durumunda sayısal veriler için ortalama, kategorik veriler için en sık değerle doldurma işlemi gerçekleştirecek şekilde yapılandırılmıştır.
