@@ -187,19 +187,47 @@ Alternatif olarak Gradient Boosting, XGBoost veya Neural Network gibi gelişmiş
 
 
 ## Orange İş Akışı
-> *Orange ile oluşturduğunuz iş akışı görselini buraya ekleyiniz. İş akışınızın adımlarını kısaca açıklayınız.*
 
-![Orange İş Akışı](goruntuler/is_akisi.png)
+![Orange İş Akışı](img/isakisi.png)
+
+File: İlk olarak, Kaggle’dan indirilen heart.csv veri seti projeye yüklenmiştir.
+
+Impute: Eksik veriler kontrol edilerek, varsa uygun şekilde doldurulmuştur. Ancak bu veri setinde eksik veri bulunmamıştır.
+
+Continuize: Kategorik veriler sayısal formata dönüştürülmüş ve modellerin doğru çalışabilmesi için dönüşüm yapılmıştır.
+
+Select Columns: Hedef değişken (HeartDisease) açıkça belirtilmiş ve analizde kullanılacak öznitelikler seçilmiştir.
+
+Makine Öğrenmesi Algoritmaları (kNN, SVM, Random Forest, Logistic Regression, Naive Bayes): Bu sınıflandırma algoritmaları veri setine uygulanmıştır.
+
+Test and Score: 5 katlı çapraz doğrulama yöntemi kullanılarak modellerin performansı değerlendirilmiştir. AUC, Accuracy, Precision, Recall, F1 ve MCC gibi metriklerle ölçüm yapılmıştır.
+
+PCA: Boyut indirgeme için Principal Component Analysis uygulanmış ve bileşenlerin varyans oranları görselleştirilmiştir.
+
+ROC Analysis: Her model için ROC eğrileri çizilerek sınıflandırma başarıları kıyaslanmıştır.
+
+Confusion Matrix: Doğru ve yanlış sınıflandırmalar detaylı olarak incelenmiştir.
+
+Data Table (1): Modellerin yaptığı tahminler örnek veri üzerinden tablolaştırılmıştır.
+
+Scatter Plot, Box Plot, Correlation, Distribution: EDA (keşifsel veri analizi) aşamasında verinin yapısı, dağılımı ve öznitelikler arası ilişkiler görselleştirilmiştir.
 
 ## Sonuç ve Öneriler
-> *Projenizin genel bir değerlendirmesini yapınız. Elde ettiğiniz sonuçlar hakkında çıkarımlarınızı ve gelecek çalışmalar için önerilerinizi yazınız.*
+Bu projede, kalp hastalığını tahmin etmeye yönelik bir makine öğrenmesi uygulaması gerçekleştirilmiştir. Kaggle üzerinden elde edilen veri seti üzerinde keşifsel veri analizi, ön işleme adımları ve çeşitli sınıflandırma algoritmaları kullanılarak kapsamlı bir değerlendirme yapılmıştır.
 
+Lojistik Regresyon modeli, doğruluk (%86.5), F1 skoru (%86.5) ve AUC (%92.4) gibi metriklerde en başarılı sonuçları vermiştir. Bu sonuç, modelin hem pozitif hem negatif sınıfları ayırt etmede dengeli bir performans gösterdiğini ortaya koymaktadır. SVM, Naive Bayes ve Random Forest modelleri de tatmin edici sonuçlar üretmiş, ancak kNN diğer modellere göre daha düşük performans göstermiştir.
+
+Gelecekte, model başarısını artırmak amacıyla hiperparametre optimizasyonu, farklı özellik seçimi yöntemleri ve daha büyük veri setleri ile çalışılması önerilmektedir. Ayrıca, derin öğrenme modelleri veya topluluk (ensemble) yöntemlerinin denenmesi modelin genellenebilirliğini daha da artırabilir.
+
+Bu çalışma, veri odaklı yaklaşımlarla kalp hastalığı teşhisinde karar destek sistemlerinin geliştirilmesine katkı sağlayabileceğini göstermektedir.
 ## Kaynaklar
-> *Proje boyunca yararlandığınız kaynakları (makaleler, web siteleri, videolar, vb.) buraya ekleyiniz.*
+1.Heart Disease UCI Dataset - Kaggle
+https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction
+(Veri seti buradan alınmıştır.)
 
-1. Kaynak 1
-2. Kaynak 2
-3. ...
+2.Orange Data Mining
+https://orangedatamining.com/
+(Veri analizi ve modelleme için kullanılan görsel programlama aracı.)
 
 ## Ekler
 ### Orange Proje Dosyası
