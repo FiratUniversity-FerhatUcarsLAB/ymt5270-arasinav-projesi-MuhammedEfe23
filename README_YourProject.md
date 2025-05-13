@@ -71,8 +71,12 @@ Veri seti dengeli bir sınıf dağılımına sahiptir ve eksik veri içermemekte
 
 
 ## Keşifsel Veri Analizi (Explanatory Data Analysis - EDA)
-### Temel İstatistikler
-![Yaş Dağılımı](img/age.png)
+### Temel İstatistikler 
+Veri setindeki yaş,cinsiyet ve hastalık gibi özelliklerin orange'daki distributions widget'i ile dağılımları gösterilmiştir.
+
+![Yaş Dağılımı](img/age.png) 
+![Cinsiyet Dağılımı](img/gender.png)
+![Hastalık Dağılımı](img/disease.png)
 
 
 ### Veri Ön İşleme
