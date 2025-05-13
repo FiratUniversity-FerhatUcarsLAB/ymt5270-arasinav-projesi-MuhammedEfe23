@@ -16,20 +16,59 @@ Modellerin başarıları; doğruluk, F1 skoru, ROC-AUC gibi metriklerle ölçül
 
 ## Veri Seti
 ### Veri Seti Bilgileri
-- **Veri Seti Adı**: 
-- **Kaynak**: *(URL veya referans)*
-- **Lisans**: *(Eğer belirtilmişse)*
-- **Veri Seti Boyutu**: *(örn. 500 satır, 10 sütun)*
+- **Veri Seti Adı**: Heart Disease Dataset
+- **Kaynak**: *https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction*
+- **Veri Seti Boyutu**: *918 satır, 12 sütun (11 öznitelik + 1 hedef değişken)*
 
 ### Veri Seti Tanımı
-> *Veri setinin içeriğini detaylı olarak açıklayınız. Hangi öznitelikleri içerdiği, verilerin nasıl toplandığı, olası sınırlılıkları gibi bilgileri buraya yazınız.*
+Bu çalışmada kullanılan veri seti, Kaggle üzerinden temin edilen Heart Disease veri setidir. Toplam 918 bireye ait gözlem içeren bu veri seti, kişisel sağlık verilerine ve kalp hastalığı teşhisine yönelik sınıflandırma problemleri için uygundur.
+
+Veri setinde yer alan öznitelikler şunlardır:
+
+Age: Kişinin yaşı (sayısal)
+
+Sex: Cinsiyet bilgisi (M: Erkek, F: Kadın)
+
+ChestPainType: Göğüs ağrısı tipi (ASY, ATA, NAP, TA)
+
+RestingBP: Dinlenme halindeki kan basıncı (mm Hg)
+
+Cholesterol: Serum kolesterol seviyesi (mg/dl)
+
+FastingBS: Açlık kan şekeri > 120 mg/dl (0: Hayır, 1: Evet)
+
+RestingECG: Dinlenme elektrokardiyografik sonuç (Normal, ST, LVH)
+
+MaxHR: Egzersiz sırasında ulaşılan maksimum kalp atış hızı
+
+ExerciseAngina: Egzersize bağlı anjina (Y: Evet, N: Hayır)
+
+Oldpeak: Egzersizle indüklenen ST depresyonu
+
+ST_Slope: Egzersiz sırasında ST segmentinin eğimi (Flat, Up, Down)
+
+HeartDisease: Hedef değişken; kişinin kalp hastalığı olup olmadığı (0: Yok, 1: Var)
+
+Veriler büyük olasılıkla geçmiş hasta kayıtları ve klinik test sonuçları üzerinden toplanmış olup, bireylerin yaş, cinsiyet ve sağlık verilerini temel alarak kalp hastalığına ilişkin bir tahmin modeli geliştirmeye olanak sağlar.
+
+Veri seti dengeli bir sınıf dağılımına sahiptir ve eksik veri içermemektedir.
 
 ### Öznitelik Açıklamaları
-| Öznitelik Adı | Veri Tipi | Açıklama | Örnek Değer |
-|---------------|-----------|----------|-------------|
-| Örnek Öznitelik 1 | Sayısal | İlgili açıklama | 42.5 |
-| Örnek Öznitelik 2 | Kategorik | İlgili açıklama | "Evet" |
-| ... | ... | ... | ... |
+| Öznitelik Adı       | Veri Tipi | Açıklama                                                        | Örnek Değer |
+|---------------------|-----------|------------------------------------------------------------------|-------------|
+| Age                 | Sayısal   | Kişinin yaşı                                                     | 52          |
+| Sex                 | Kategorik | Cinsiyet (M: Erkek, F: Kadın)                                   | M           |
+| ChestPainType       | Kategorik | Göğüs ağrısı tipi (ATA, NAP, ASY, TA)                           | ATA         |
+| RestingBP           | Sayısal   | Dinlenme halindeki kan basıncı (mm Hg)                          | 130         |
+| Cholesterol         | Sayısal   | Serum kolesterol düzeyi (mg/dl)                                 | 250         |
+| FastingBS           | Kategorik | Açlık kan şekeri >120 mg/dl (0: Hayır, 1: Evet)                 | 1           |
+| RestingECG          | Kategorik | Dinlenme EKG sonucu (Normal, ST, LVH)                           | Normal      |
+| MaxHR               | Sayısal   | Egzersiz sırasında ulaşılan maksimum kalp atış hızı            | 172         |
+| ExerciseAngina      | Kategorik | Egzersize bağlı göğüs ağrısı (Y: Var, N: Yok)                   | N           |
+| Oldpeak             | Sayısal   | Egzersizle indüklenen ST depresyonu (mm)                        | 1.0         |
+| ST_Slope            | Kategorik | ST segmentinin eğimi (Up, Flat, Down)                          | Flat        |
+| HeartDisease (Hedef)| Kategorik | Kalp hastalığı var mı? (0: Yok, 1: Var)                         | 1           |
+
 
 ## Keşifsel Veri Analizi (Explanatory Data Analysis - EDA)
 ### Temel İstatistikler
