@@ -91,38 +91,100 @@ Continuize bileşeni aracılığıyla kategorik değişkenler otomatik olarak sa
 Son olarak, Select Columns bileşeni kullanılarak hedef değişken (HeartDisease) açıkça tanımlanmış, model eğitimi için gerekli öznitelikler belirlenmiştir. Bu sayede makine öğrenmesi algoritmalarının doğru şekilde eğitilmesi sağlanmıştır.
 
 ### Görselleştirmeler
-> *Orange ile yaptığınız veri görselleştirmelerini buraya ekleyiniz. Her görselleştirme için kısa bir açıklama yazınız. Görselleri bu repoya yükleyip, markdown içinde referans verebilirsiniz.*
+#### Görselleştirme 1: [ROC Eğrisi – Model Karşılaştırması]
+![Görselleştirme](img/roc.png) 
+Bu görselleştirme, farklı sınıflandırma algoritmalarının (kNN, SVM, Logistic Regression, Naive Bayes, Random Forest) ROC eğrisi üzerinden başarılarını kıyaslamaktadır.
+ROC eğrisinin altında kalan alan (AUC) ne kadar büyükse modelin pozitif sınıfı ayırma başarısı o kadar yüksektir.
+Görsele göre Logistic Regression ve SVM en başarılı modeller olarak öne çıkmaktadır.
 
-#### Görselleştirme 1: [Görselleştirme Adı]
-![Görselleştirme 1 Açıklaması](goruntuler/gorselleştirme1.png)
-> *Bu görselleştirme ile ilgili yorumunuz ve çıkarımlarınız.*
+#### Görselleştirme 2: [PCA – Boyut İndirgeme Görselleştirmesi]
+![Görselleştirme](img/pca.png) 
+PCA (Principal Component Analysis) yöntemi ile verideki en bilgilendirici bileşenler seçilmiş ve varyans katkıları analiz edilmiştir.
+İlk iki bileşen verinin toplam varyansının %33’ünü açıklamaktadır. Bu da sınıflar arası ayrımı görselleştirmede kısmen yeterli bir düzey sunar.
 
-#### Görselleştirme 2: [Görselleştirme Adı]
-![Görselleştirme 2 Açıklaması](goruntuler/gorselleştirme2.png)
-> *Bu görselleştirme ile ilgili yorumunuz ve çıkarımlarınız.*
+#### Görselleştirme 3: [Confusion Matrix – KNN]
+![Görselleştirme](img/confusionmatrix.png) 
+Bu görselleştirme, Logistic Regression modelinin tahmin performansını göstermektedir.
+Gerçek değeri 0 (kalp hastalığı yok) olan 410 örnekten 269'u doğru, 141'i yanlış sınıflandırılmıştır.
+Gerçek değeri 1 (kalp hastalığı var) olan 508 örnekten 387'si doğru, 121'i yanlış sınıflandırılmıştır.
+Genel doğrulama başarısı oldukça iyidir ve özellikle sınıf 1 (hastalığı olan bireyler) için yüksek duyarlılık sergilenmiştir.
 
 ### Öznitelik İlişkileri
-> *Öznitelikler arasındaki ilişkileri analiz ediniz. Korelasyon matrisi, scatter plot matrisi gibi görsellerle destekleyiniz.*
+Veri setindeki öznitelikler arasındaki doğrusal ilişkiler, Pearson korelasyon katsayısı kullanılarak analiz edilmiştir. Orange aracıyla oluşturulan korelasyon matrisi sonuçlarına göre en dikkat çekici ilişki, Age (yaş) ile MaxHR (maksimum kalp atım hızı) arasındaki -0.382 korelasyon katsayısıdır. Bu negatif ilişki, yaş arttıkça maksimum kalp atım hızının azaldığını göstermektedir.
+
+Diğer dikkat çeken korelasyonlar:
+
+Age ile Oldpeak: +0.259 (yaş arttıkça ST depresyonu artıyor olabilir)
+
+Age ile RestingBP: +0.254
+
+Cholesterol ile MaxHR: -0.236
+
+Oldpeak ile RestingBP: +0.165
+
+Bu değerlerin hiçbiri güçlü (|r| > 0.7) bir korelasyon göstermemektedir. Ancak yine de zayıf veya orta düzeyde korelasyonlar, modelin yorumlanmasında ve öznitelik mühendisliğinde önemli olabilir.
 
 ## Makine Öğrenmesi Uygulaması
 ### Kullanılan Yöntem
-> *Veri setinize uyguladığınız makine öğrenmesi yöntemini (sınıflandırma, regresyon veya kümeleme) belirtiniz ve neden bu yöntemi seçtiğinizi açıklayınız.*
+Bu projede hedef değişken olan HeartDisease kategorik (0: yok, 1: var) olduğundan dolayı sınıflandırma yöntemi uygulanmıştır.
+Amaç, bireylerin sağlık bilgilerine dayanarak kalp hastalığı olup olmadığını öngörmektir.
+Bu tür sınıflandırma problemleri için yaygın olarak kullanılan kNN, SVM, Random Forest, Logistic Regression ve Naive Bayes algoritmaları denenmiştir.
 
 ### Modeller ve Parametreler
-> *Denediğiniz modelleri ve kullandığınız parametreleri açıklayınız. Orange'da yapılandırdığınız widget ayarlarını ekran görüntüleri ile destekleyebilirsiniz.*
+Aşağıdaki modeller Orange platformunda varsayılan parametrelerle kullanılmıştır:
+
+kNN (k-En Yakın Komşu): Varsayılan k=5 komşu sayısı ile çalıştırılmıştır.
+
+SVM (Destek Vektör Makineleri): Lineer kernel ile uygulanmıştır.
+
+Random Forest: 10 adet karar ağacı kullanılarak ensemble yöntemle sınıflandırma yapılmıştır.
+
+Logistic Regression: Lojistik model doğrusal ayrım yaparak hedef sınıfı tahmin etmiştir.
+
+Naive Bayes: Koşullu olasılıklar varsayımıyla çalışmış ve istatistiksel olarak güçlü performans göstermiştir.
+
+Veri öncesinde Impute bileşeni ile eksik değerlerin ortalama ile doldurulması ve Continuize ile kategorik-sayısal dönüşümler sağlanmıştır.
 
 ### Model Değerlendirmesi
-> *Uyguladığınız modelin performansını değerlendiriniz. Kullandığınız değerlendirme metriklerini açıklayınız.*
+Model performansları 5 katlı çapraz doğrulama yöntemiyle değerlendirilmiştir. Aşağıdaki metrikler kullanılmıştır:
+
+Doğruluk (Accuracy)
+
+F1 Skoru
+
+Duyarlılık (Recall)
+
+Kesinlik (Precision)
+
+ROC-AUC
+
+En yüksek AUC değeri Logistic Regression (0.924) ile elde edilmiştir. Ancak Naive Bayes ve SVM modelleri de yüksek F1 skorları (%85-86) ile dikkat çekmiştir.
+Görselleştirme olarak Confusion Matrix, ROC Eğrisi ve PCA analizi kullanılarak modeller arası karşılaştırma yapılmıştır.
 
 #### Metrikler
-| Metrik | Değer |
-|--------|-------|
-| Örnek Metrik 1 | 0.85 |
-| Örnek Metrik 2 | 0.78 |
-| ... | ... |
+### Metrikler
+| Metrik                    | Değer  |
+|---------------------------|--------|
+| Doğruluk (CA)             | 0.865  |
+| F1 Skoru (F1)             | 0.865  |
+| Kesinlik (Precision)     | 0.865  |
+| Duyarlılık (Recall)      | 0.865  |
+| ROC-AUC Skoru (AUC)      | 0.924  |
+
+
 
 ### Sonuçların Yorumlanması
-> *Elde ettiğiniz sonuçları detaylı bir şekilde yorumlayınız. Modelin güçlü ve zayıf yönleri nelerdir? Başka hangi modeller denenebilirdi?*
+Yapılan sınıflandırma analizlerinde beş farklı model (kNN, SVM, Logistic Regression, Naive Bayes ve Random Forest) karşılaştırılmıştır. Elde edilen sonuçlara göre, en yüksek AUC ve doğruluk (CA) değerlerine ulaşan model Logistic Regression olmuştur. Bu modelin F1 skoru, duyarlılık (Recall) ve kesinlik (Precision) gibi metrikleri de oldukça dengelidir. Bu durum, Logistic Regression modelinin veri setindeki sınıfları ayırt etmede başarılı olduğunu göstermektedir.
+
+SVM ve Naive Bayes modelleri de tatmin edici performans göstermiştir. Özellikle SVM, yüksek kesinlik değeriyle dikkat çekerken, Naive Bayes modeli duyarlılık açısından güçlü performans sergilemiştir.
+
+Buna karşın, kNN modeli diğer modellere kıyasla daha düşük AUC ve F1 skorlarına sahiptir. Bu durum, kNN'nin veri setinin doğasına tam olarak uyum sağlayamadığını ve sınıflandırma kararlarını daha zayıf verdiğini göstermektedir.
+
+Modelin güçlü yönleri arasında dengesiz veri setiyle başa çıkabilme, ROC eğrisi altında yüksek alan değeri ve genellikle yüksek F1 skoru yer alırken; zayıf yönleri arasında bazı modellerde (örneğin kNN) yüksek yanlış sınıflandırma oranı sayılabilir.
+
+Alternatif olarak Gradient Boosting, XGBoost veya Neural Network gibi gelişmiş modeller de denenerek model başarısı daha da artırılabilir.
+
+
 
 ## Orange İş Akışı
 > *Orange ile oluşturduğunuz iş akışı görselini buraya ekleyiniz. İş akışınızın adımlarını kısaca açıklayınız.*
